@@ -361,6 +361,13 @@ static RNGridMenu *rn_visibleGridMenu;
     return self;
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    [UIView animateWithDuration:_animationDuration animations:^{
+        _menuView.center = self.view.center;
+    }];
+}
+
 - (instancetype)initWithImages:(NSArray *)images {
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:images.count];
     for (UIImage *image in images) {
